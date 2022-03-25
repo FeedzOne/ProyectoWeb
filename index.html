@@ -12,6 +12,7 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css" integrity="sha512-10/jx2EXwxxWqCLX/hHth/vu2KY3jCF70dCQB8TSgNjbCVAC/8vai53GfMDrO2Emgwccf2pJqxct9ehpzG+MTw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 <!--CDN React.js-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/react-is/0.0.0-experimental-8fce11699-20220316/umd/react-is.production.min.js" integrity="sha512-NQfzurHMH668fWCZsHWuaNRNhtc7hLksb4xfisJ1Jx8oLa2bxoxnWSuAOekV6Hr0+dd5ydaJSwyS67Qv4wKzdQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script src="script.js" type="js/script.js"></script>
 <title>Feedzoverso</title>
 </head>
 <body class="centrado">
@@ -35,21 +36,66 @@
 	</article>
 	<header>
 		<h2>My Hobbies :D</h2>
-		<section class="centrado">
+		<section>
 			<h3>Music</h3>
-			<div class="centrado">
+			<div>
 				<iframe title="deezer-widget" src="https://widget.deezer.com/widget/dark/track/101215846" width="75%" height="250" frameborder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
 				<br>
 				<br>
 				<iframe title="deezer-widget" src="https://widget.deezer.com/widget/dark/track/1195560" width="75%" height="250" frameborder="0" allowtransparency="true" allow="encrypted-media; clipboard-write"></iframe>
 			</div>
 			<h3>Videos</h3>
-				<div>
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/OOH4IabFTlU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-					<br>
-					<br>
-					<iframe width="560" height="315" src="https://www.youtube.com/embed/smCMN5TM0T4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-				</div>
+			<div>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/OOH4IabFTlU" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+				<br>
+				<br>
+				<iframe width="560" height="315" src="https://www.youtube.com/embed/smCMN5TM0T4" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+			</div>
+			<h3>Images</h3>
+			<div>
+				
+			</div>
+			<h3>Lets Play tic tac toe!</h3>
+			<div>
+				<div id="errors" style="
+				  background: #c00;
+				  color: #fff;
+				  display: none;
+				  margin: -20px -20px 20px;
+				  padding: 20px;
+				  white-space: pre-wrap;
+				"></div>
+				<div id="root"></div>
+				<script>
+				window.addEventListener('mousedown', function(e) {
+				  document.body.classList.add('mouse-navigation');
+				  document.body.classList.remove('kbd-navigation');
+				});
+				window.addEventListener('keydown', function(e) {
+				  if (e.keyCode === 9) {
+					document.body.classList.add('kbd-navigation');
+					document.body.classList.remove('mouse-navigation');
+				  }
+				});
+				window.addEventListener('click', function(e) {
+				  if (e.target.tagName === 'A' && e.target.getAttribute('href') === '#') {
+					e.preventDefault();
+				  }
+				});
+				window.onerror = function(message, source, line, col, error) {
+				  var text = error ? error.stack || error : message + ' (at ' + source + ':' + line + ':' + col + ')';
+				  errors.textContent += text + '\n';
+				  errors.style.display = '';
+				};
+				console.error = (function(old) {
+				  return function error() {
+					errors.textContent += Array.prototype.slice.call(arguments).join(' ') + '\n';
+					errors.style.display = '';
+					old.apply(this, arguments);
+				  }
+				})(console.error);
+				</script>
+			</div>
 		</section>
 		</header>
 </section>
